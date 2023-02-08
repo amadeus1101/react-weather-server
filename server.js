@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const server = express();
+const PORT = process.env.PORT || 3001;
 
 require("dotenv").config();
 
@@ -37,4 +38,6 @@ server.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
     });
 });
 
-server.listen(process.env.PORT);
+server.listen(PORT, () => {
+  console.log("Server startd");
+});
