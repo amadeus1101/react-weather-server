@@ -1,18 +1,18 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-const server = express();
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 require("dotenv").config();
 
-server.use(
+app.use(
   cors({
     origin: "*",
   })
 );
 
-server.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
+app.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
   let endpoint = process.env.API_BASE_URL + req.params.endpoint;
 
   let params = {};
@@ -38,6 +38,6 @@ server.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
     });
 });
 
-server.listen(PORT, () => {
-  console.log("Server startd");
+app.listen(PORT, () => {
+  console.log("app startd");
 });
