@@ -27,7 +27,7 @@ app.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
     .get(endpoint, {
       params: params,
       headers: {
-        "X-Yandex-API-Key": "cd21cc0f-f0db-455f-a226-e7c988d360d5",
+        "X-Yandex-API-Key": "88fce1b1-c7ea-44e9-aec5-915ba8a38458",
       },
     })
     .then((response) => {
