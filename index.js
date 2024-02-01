@@ -1,32 +1,25 @@
 import express from "express";
 import axios from "axios";
 import cors from "cors";
-import { data } from "./db.js";
 import { config } from "dotenv";
+import { data } from "./db.js";
 
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-//require("dotenv").config();
 
 app.use(
   cors({
     origin: "*",
   })
 );
-app.get("/", (req, res) => {
-  res.send(data);
-});
+// app.get("/", (req, res) => {
+//   res.send(data);
+// });
 
 app.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
-  let endpoint = process.env.API_BASE_URL + req.params.endpoint;
-
+  let endpoint = "https://api.weather.yandex.ru" + req.params.endpoint;
   let params = {};
-
-  params[process.env.API_KEY_PARAM_NAME] = process.env.API_KEY;
+  //params[process.env.API_KEY_PARAM_NAME] = process.env.API_KEY;
 
   for (const [field, value] of Object.entries(req.query)) {
     params[field] = value;
@@ -36,7 +29,7 @@ app.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
     .get(endpoint, {
       params: params,
       headers: {
-        "X-Yandex-API-Key": "8eb829ac-9e88-43a3-8095-130869cdd708",
+        "X-Yandex-API-Key": "1191cb9b-c919-42ae-805c-f976499d8880",
       },
     })
     .then((response) => {
