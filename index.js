@@ -12,9 +12,9 @@ app.use(
     origin: "*",
   })
 );
-// app.get("/", (req, res) => {
-//   res.send(data);
-// });
+app.get("/default", (req, res) => {
+  res.send(data);
+});
 
 app.get(":endpoint([\\/\\w\\.-]*)", function (req, res) {
   let endpoint = "https://api.weather.yandex.ru" + req.params.endpoint;
